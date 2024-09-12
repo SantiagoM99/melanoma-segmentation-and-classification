@@ -1,1 +1,1 @@
-# melanoma-segmentation-and-classification
+# Melanoma Segmentation and Classification
