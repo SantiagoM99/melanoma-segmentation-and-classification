@@ -1,0 +1,16 @@
+torch==2.3.0
+torchaudio==2.3.0
+torchvision==0.18.0
+albumentations
+numpy
+pandas
+scikit_learn
+kaggle
+resnest
+geffnet
+opencv-python
+pretrainedmodels
+tqdm
+Pillow
+packaging
+
