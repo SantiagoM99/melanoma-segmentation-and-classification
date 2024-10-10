@@ -55,11 +55,11 @@ test_dataloader = DataLoader(test_dataset, batch_size=1, shuffle=False)
 # Get the train test and validation datasets
 
 # Train
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print(torch.cuda.is_available())
-print(torch.version.cuda)
+# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# print(torch.cuda.is_available())
+# print(torch.version.cuda)
 
 # Test the SkinLesionDataset class
-# plot_img_mask_pred(train_dataset)
-# plot_img_mask_pred(val_dataset)
-# plot_img_mask_pred(test_dataset)
+plot_img_mask_pred(train_dataset)
+plot_img_mask_pred(val_dataset)
+plot_img_mask_pred(test_dataset)
