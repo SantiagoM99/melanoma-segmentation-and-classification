@@ -1,18 +1,26 @@
 from setuptools import setup, find_packages
 
-
-def read_requirements():
-    with open("requirements.txt") as req:
-        content = req.read()
-        requirements = content.split("\n")
-    return requirements
-
-
 setup(
-    name="melanoma-segmentation-classification",
-    version="0.1",
+    name="melanoma-segmentation",
+    version="0.3",
     packages=find_packages(),
-    install_requires=[read_requirements()],
+    install_requires=[
+        "torch==2.3.0",
+        "torchaudio==2.3.0",
+        "torchvision==0.18.0",
+        "albumentations",
+        "numpy",
+        "pandas",
+        "scikit_learn",
+        "kaggle",
+        "resnest",
+        "geffnet",
+        "opencv-python",
+        "pretrainedmodels",
+        "tqdm",
+        "Pillow",
+        "packaging",
+    ],
     author="Santiago Martínez Novoa",
     author_email="s.martinezn@uniandes.edu.co",
     description="Melanoma segmentation and classification",

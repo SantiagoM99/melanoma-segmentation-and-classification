@@ -14,11 +14,7 @@ def get_transforms(phase, image_size):
             [
                 A.Resize(image_size, image_size),
                 A.HorizontalFlip(p=0.5),
-                A.RandomBrightnessContrast(p=0.2),
-                A.RandomGamma(p=0.2),
-                A.RGBShift(p=0.2),
-                A.Blur(p=0.2),
-                A.Normalize(),
+                A.Normalize(mean=(0, 0, 0), std=(1, 1, 1), max_pixel_value=255),
                 ToTensorV2(),
             ]
         )
@@ -26,7 +22,7 @@ def get_transforms(phase, image_size):
         return A.Compose(
             [
                 A.Resize(image_size, image_size),
-                A.Normalize(),
+                A.Normalize(mean=(0, 0, 0), std=(1, 1, 1), max_pixel_value=255),
                 ToTensorV2(),
             ]
         )

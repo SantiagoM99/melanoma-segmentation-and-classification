@@ -27,6 +27,7 @@ class SkinLesionDataset(Dataset):
         # Transform into array
         img_np = np.array(image)
         msk_np = np.array(mask)
+        msk_np[msk_np == 255.0] = 1.0
 
         if self.transform:
             # For reference (C,H,W) represent (channel, height, width)
