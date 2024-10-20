@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from unet import ConvBlock, UpConv
+from models.unet import ConvBlock, UpConv
 
 
 class AttentionBlock(nn.Module):
