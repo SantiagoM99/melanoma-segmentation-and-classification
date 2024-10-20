@@ -6,7 +6,8 @@ from utils.preparation_tools import prepare_datasets
 from results.evaluator import Evaluator
 from torch.utils.data import DataLoader
 from torch.nn import DataParallel
-
+from results.plots import plot_img_mask_pred
+import torch
 
 # Configuration
 base_dir = CONFIG["base_dir"]
@@ -18,26 +19,60 @@ split_val = CONFIG["split_val"]
 split_test = CONFIG["split_test"]
 image_size = CONFIG["image_size"]
 batch_size = CONFIG["batch_size"]
-model_path = CONFIG["model_path"]
+model_path = CONFIG["model_path"]+"unet_128_aug.pth"
 device = CONFIG["device"]
 
-train_dataset, val_dataset, test_dataset = prepare_datasets(CONFIG, train_transform_type="train")
+CONFIG_FINAL = CONFIG.copy()
+CONFIG_FINAL["image_size"] = 128
+
+train_dataset, val_dataset, test_dataset = prepare_datasets(CONFIG_FINAL, train_transform_type="train")
+
+model = DataParallel(UNet())
+model.load_state_dict(torch.load(model_path, map_location=device))
+model.to(device)
 
 
 test_dataloader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
 
 
+evaluator = Evaluator(model_path, model, test_dataloader, device)
 
-model = DataParallel(UNet())
+# Evaluate the model
+avg_dice, avg_iou, avg_precision, avg_recall, max_indices, min_indices = evaluator.evaluate()
 
-
-evaluator = Evaluator(model_path+"unet.pth", model, test_dataloader, device)
-
-
-avg_dice, avg_iou, avg_precision, avg_recall = evaluator.evaluate()
-
+# Print results
 print("\n----- Evaluation Results -----")
 print(f"Average Dice Coefficient: {avg_dice:.4f}")
 print(f"Average IoU Score: {avg_iou:.4f}")
 print(f"Average Precision: {avg_precision:.4f}")
 print(f"Average Recall: {avg_recall:.4f}")
+
+# Plot the image with the highest and lowest Dice score
+print("\nPlotting the image with the highest Dice score:")
+plot_img_mask_pred(test_dataset, index=max_indices[0], plot_pred=True, model=model, device=device)
+
+print("\nPlotting the image with the lowest Dice score:")
+plot_img_mask_pred(test_dataset, index=min_indices[0], plot_pred=True, model=model, device=device)
+
+# # Plot the images with the highest and lowest IoU scores
+# print("\nPlotting the image with the highest IoU score:")
+# plot_img_mask_pred(test_dataset, index=max_indices[1], plot_pred=True, model=model, device=device)
+
+# print("\nPlotting the image with the lowest IoU score:")
+# plot_img_mask_pred(test_dataset, index=min_indices[1], plot_pred=True, model=model, device=device)
+
+# # Plot the images with the highest and lowest precision scores
+# print("\nPlotting the image with the highest precision:")
+# plot_img_mask_pred(test_dataset, index=max_indices[2], plot_pred=True, model=model, device=device)
+
+# print("\nPlotting the image with the lowest precision:")
+# plot_img_mask_pred(test_dataset, index=min_indices[2], plot_pred=True, model=model, device=device)
+
+# # Plot the images with the highest and lowest recall scores
+# print("\nPlotting the image with the highest recall:")
+# plot_img_mask_pred(test_dataset, index=max_indices[3], plot_pred=True, model=model, device=device)
+
+# print("\nPlotting the image with the lowest recall:")
+# plot_img_mask_pred(test_dataset, index=min_indices[3], plot_pred=True, model=model, device=device)
+
+
