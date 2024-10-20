@@ -2,7 +2,7 @@ from configs.config_setting import CONFIG
 from models.unet import UNet
 # from models.attention_unet import AttUNet
 from models.trans_unet import TransUNet
-from utils import prepare_datasets
+from utils.preparation_tools import prepare_datasets
 from results.evaluator import Evaluator
 from torch.utils.data import DataLoader
 from torch.nn import DataParallel
