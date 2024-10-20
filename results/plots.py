@@ -3,12 +3,25 @@ import torch
 import matplotlib.pyplot as plt
 
 
-def plot_img_mask_pred(dataset, index=None, plot_pred=False, model=None, device="cuda"):
+def plot_img_mask_pred(dataset, index=None, plot_pred=False, model =None, device="cpu"):
     """
-    author: an-eve
     Plot the image, mask, and prediction
-    repository: https://github.com/an-eve/ISIC-2016-lesion-segmentation-challenge/blob/main/helper_plotting.py
+
+    Args:
+        dataset (torch.utils.data.Dataset): Dataset containing images and masks.
+        index (int): Index of the image to plot (default: None).
+        plot_pred (bool): Flag to plot the prediction (default: False).
+        model (torch.nn.Module): Model used for prediction (default: None).
+        device (str): Device to use for prediction (default: "cpu").
+    
+    References: This function is adapted from the following source:
+    -----------
+    - Title: ISIC 2016 Lesion Segmentation Challenge
+    - Author: an-eve
+    - Repository: https://github.com/an-eve/ISIC-2016-lesion-segmentation-challenge/blob/main/helper_plotting.py
+
     """
+
     if not index:
         index = random.randint(0, len(dataset) - 1)
 
@@ -16,7 +29,7 @@ def plot_img_mask_pred(dataset, index=None, plot_pred=False, model=None, device=
     mask = dataset[index][1].permute(1, 2, 0)
 
     if plot_pred:
-        img_to_pred = dataset[index][0].unsqueeze(0).type(torch.float32).to(device)
+        img_to_pred = dataset[index][0].unsqueeze(0).to(device)
         pred = model(img_to_pred)
         pred = pred.squeeze(0).cpu().detach().permute(1, 2, 0)
         pred[pred < 0] = 0
