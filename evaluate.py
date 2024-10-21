@@ -54,25 +54,4 @@ plot_img_mask_pred(test_dataset, index=max_indices[0], plot_pred=True, model=mod
 print("\nPlotting the image with the lowest Dice score:")
 plot_img_mask_pred(test_dataset, index=min_indices[0], plot_pred=True, model=model, device=device)
 
-# # Plot the images with the highest and lowest IoU scores
-# print("\nPlotting the image with the highest IoU score:")
-# plot_img_mask_pred(test_dataset, index=max_indices[1], plot_pred=True, model=model, device=device)
-
-# print("\nPlotting the image with the lowest IoU score:")
-# plot_img_mask_pred(test_dataset, index=min_indices[1], plot_pred=True, model=model, device=device)
-
-# # Plot the images with the highest and lowest accuracy scores
-# print("\nPlotting the image with the highest accuracy:")
-# plot_img_mask_pred(test_dataset, index=max_indices[2], plot_pred=True, model=model, device=device)
-
-# print("\nPlotting the image with the lowest accuracy:")
-# plot_img_mask_pred(test_dataset, index=min_indices[2], plot_pred=True, model=model, device=device)
-
-# # Plot the images with the highest and lowest recall scores
-# print("\nPlotting the image with the highest recall:")
-# plot_img_mask_pred(test_dataset, index=max_indices[3], plot_pred=True, model=model, device=device)
-
-# print("\nPlotting the image with the lowest recall:")
-# plot_img_mask_pred(test_dataset, index=min_indices[3], plot_pred=True, model=model, device=device)
-
 
