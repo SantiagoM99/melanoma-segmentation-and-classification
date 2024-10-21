@@ -6,7 +6,7 @@ import numpy as np
 
 class Evaluator:
     """
-    Class to evaluate a segmentation model using metrics such as Dice coefficient, IoU, precision, and recall.
+    Class to evaluate a segmentation model using metrics such as Dice coefficient, IoU, accuracy, and recall.
     
     Attributes:
         model (nn.Module): The PyTorch model to evaluate.
@@ -65,9 +65,9 @@ class Evaluator:
         iou = (intersection + smooth) / (union + smooth)
         return iou.item()
 
-    def precision(self, preds, targets, smooth=1e-6):
+    def accuracy(self, preds, targets, smooth=1e-6):
         """
-        Compute the precision between predicted and target masks.
+        Compute the accuracy between predicted and target masks.
 
         Args:
             preds (torch.Tensor): Predicted mask.
@@ -75,12 +75,22 @@ class Evaluator:
             smooth (float, optional): Smoothing constant to avoid division by zero. Defaults to 1e-6.
 
         Returns:
-            float: Precision score.
+            float: Accuracy score.
         """
-        true_positives = (preds * targets).sum()
-        predicted_positives = preds.sum()
-        precision = (true_positives + smooth) / (predicted_positives + smooth)
-        return precision.item()
+        # Convert predictions and targets to binary (0 or 1)
+        preds = preds.view(-1)
+        targets = targets.view(-1)
+
+        # True Positives + True Negatives
+        correct = (preds == targets).sum()
+
+        # Total number of elements
+        total = preds.size(0)
+
+        # Accuracy formula: (TP + TN) / (Total elements)
+        accuracy = (correct + smooth) / (total + smooth)
+        
+        return accuracy.item()
 
     def recall(self, preds, targets, smooth=1e-6):
         """
@@ -101,32 +111,32 @@ class Evaluator:
 
     def evaluate(self):
         """
-        Evaluate the model on the test dataset using Dice, IoU, precision, and recall.
+        Evaluate the model on the test dataset using Dice, IoU, accuracy, and recall.
         
         Also tracks the indices of the images with the highest and lowest scores for each metric.
 
         For each metric, the indices are stored in the following order:
         - Dice: max_indices[0], min_indices[0]
         - IoU: max_indices[1], min_indices[1]
-        - Precision: max_indices[2], min_indices[2]
+        - Accuracy: max_indices[2], min_indices[2]
         - Recall: max_indices[3], min_indices[3]
 
         Returns:
             tuple: A tuple containing:
                 - avg_dice (float): Average Dice coefficient.
                 - avg_iou (float): Average IoU score.
-                - avg_precision (float): Average precision score.
+                - avg_accuracy (float): Average accuracy score.
                 - avg_recall (float): Average recall score.
-                - max_indices (list): Indices of the images with the highest Dice, IoU, precision, and recall.
-                - min_indices (list): Indices of the images with the lowest Dice, IoU, precision, and recall.
+                - max_indices (list): Indices of the images with the highest Dice, IoU, accuracy, and recall.
+                - min_indices (list): Indices of the images with the lowest Dice, IoU, accuracy, and recall.
         """
         dice_scores = []
         iou_scores = []
-        precision_scores = []
+        accuracy_scores = []
         recall_scores = []
         indices = []  # Track image indices
 
-        # To track max/min Dice, IoU, precision, and recall scores
+        # To track max/min Dice, IoU, accuracy, and recall scores
         max_values = [-1] * 4
         min_values = [float("inf")] * 4
         max_indices = [0] * 4
@@ -145,13 +155,13 @@ class Evaluator:
                 # Calculate metrics
                 dice = self.dice_coefficient(preds, masks)
                 iou = self.iou_score(preds, masks)
-                precision = self.precision(preds, masks)
+                accuracy = self.accuracy(preds, masks)
                 recall = self.recall(preds, masks)
 
                 # Store the metrics
                 dice_scores.append(dice)
                 iou_scores.append(iou)
-                precision_scores.append(precision)
+                accuracy_scores.append(accuracy)
                 recall_scores.append(recall)
                 indices.append(idx)  # Track the index of the image
 
@@ -170,11 +180,11 @@ class Evaluator:
                     min_values[1] = iou
                     min_indices[1] = idx
 
-                if precision > max_values[2]:
-                    max_values[2] = precision
+                if accuracy > max_values[2]:
+                    max_values[2] = accuracy
                     max_indices[2] = idx
-                if precision < min_values[2]:
-                    min_values[2] = precision
+                if accuracy < min_values[2]:
+                    min_values[2] = accuracy
                     min_indices[2] = idx
 
                 if recall > max_values[3]:
@@ -188,14 +198,14 @@ class Evaluator:
         print(f"Total number of images evaluated: {len(dice_scores)}")
         print(f"Range of Dice scores: {min(dice_scores)} - {max(dice_scores)}")
         print(f"Range of IoU scores: {min(iou_scores)} - {max(iou_scores)}")
-        print(f"Range of Precision scores: {min(precision_scores)} - {max(precision_scores)}")
+        print(f"Range of Accuracy scores: {min(accuracy_scores)} - {max(accuracy_scores)}")
         print(f"Range of Recall scores: {min(recall_scores)} - {max(recall_scores)}")
 
         # Compute average metrics
         avg_dice = np.mean(dice_scores)
         avg_iou = np.mean(iou_scores)
-        avg_precision = np.mean(precision_scores)
+        avg_accuracy = np.mean(accuracy_scores)
         avg_recall = np.mean(recall_scores)
 
         # Return the average metrics and the indices for the highest/lowest scores
-        return avg_dice, avg_iou, avg_precision, avg_recall, max_indices, min_indices
+        return avg_dice, avg_iou, avg_accuracy, avg_recall, max_indices, min_indices
