@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from models.unet import UpConv
+from melanoma_segmentation.models.unet import UpConv
 
 class RecurrentBlock(nn.Module):
     """

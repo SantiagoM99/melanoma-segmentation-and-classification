@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from models.unet import ConvBlock, UpConv
+from melanoma_segmentation.models.unet import ConvBlock, UpConv
 
 
 class AttentionBlock(nn.Module):

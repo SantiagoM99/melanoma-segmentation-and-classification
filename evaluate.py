@@ -1,10 +1,10 @@
-from configs.config_setting import CONFIG
-from models.unet import UNet
-from models.attention_unet import AttUNet
-from models.trans_unet import TransUNet
-from utils.preparation_tools import prepare_datasets
-from results.evaluator import Evaluator
-from results.plots import plot_img_mask_pred
+from melanoma_segmentation.configs.config_setting import CONFIG
+from melanoma_segmentation.models.unet import UNet
+from melanoma_segmentation.models.attention_unet import AttUNet
+from melanoma_segmentation.models.trans_unet import TransUNet
+from melanoma_segmentation.utils.preparation_tools import prepare_datasets
+from melanoma_segmentation.results.evaluator import Evaluator
+from melanoma_segmentation.results.plots import plot_img_mask_pred
 
 from torch.utils.data import DataLoader
 from torch.nn import DataParallel

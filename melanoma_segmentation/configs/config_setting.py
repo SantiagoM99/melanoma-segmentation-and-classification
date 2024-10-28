@@ -29,6 +29,6 @@ CONFIG = {
     "split_test": 0.1,
     "image_size": 512,
     "batch_size": 16,
-    "model_path": "results/saved_models/",
+    "model_path": "melanoma_segmentation/results/saved_models/",
     "device": torch.device("cuda" if torch.cuda.is_available() else "cpu"),
 }

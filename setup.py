@@ -6,7 +6,7 @@ this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text()
 setup(
     name="melanoma-segmentation",
-    version="1.0.0",
+    version="1.0.1",
     packages=find_packages(),
     install_requires=[
         "torch==2.3.0",

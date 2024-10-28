@@ -1,8 +1,8 @@
 
-from datasets.image_data import ImageDataset
-from datasets.data import SkinLesionDataset
-from datasets.split_data import DataSplitter
-from models.transform import get_transforms
+from melanoma_segmentation.datasets.image_data import ImageDataset
+from melanoma_segmentation.datasets.data import SkinLesionDataset
+from melanoma_segmentation.datasets.split_data import DataSplitter
+from melanoma_segmentation.models.transform import get_transforms
 
 
 def prepare_datasets(config, train_transform_type="train"):
