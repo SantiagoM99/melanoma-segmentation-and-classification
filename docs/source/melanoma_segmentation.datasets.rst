@@ -12,14 +12,6 @@ melanoma\_segmentation.datasets.data module
    :undoc-members:
    :show-inheritance:
 
-melanoma\_segmentation.datasets.data\_example\_augmentation module
-------------------------------------------------------------------
-
-.. automodule:: melanoma_segmentation.datasets.data_example_augmentation
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 melanoma\_segmentation.datasets.image\_data module
 --------------------------------------------------
 
