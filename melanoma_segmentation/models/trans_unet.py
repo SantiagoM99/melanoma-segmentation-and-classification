@@ -245,14 +245,6 @@ class TransUNet(nn.Module):
         x3 = self.pool2(x2)
         x3 = self.encoder3(x3)
 
-        x4 = self.pool
-        x1 = self.encoder1(x)
-        x2 = self.pool1(x1)
-        x2 = self.encoder2(x2)
-
-        x3 = self.pool2(x2)
-        x3 = self.encoder3(x3)
-
         x4 = self.pool3(x3)
         x4 = self.encoder4(x4)
 
@@ -298,3 +290,4 @@ class TransUNet(nn.Module):
         output = F.interpolate(output, size=(128, 128), mode='bilinear', align_corners=False)
 
         return output
+
