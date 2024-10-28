@@ -71,6 +71,11 @@ To upload the built package to a repository like TestPyPI or PyPI, follow these 
     pip install twine
     twine upload dist/*
     ```
+    Or if your working in TestPyPi:
+    ```bash
+    twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+    ```
+   
 
 ## Viewing the Documentation
 
