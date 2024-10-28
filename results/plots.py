@@ -3,23 +3,39 @@ import torch
 import matplotlib.pyplot as plt
 
 
-def plot_img_mask_pred(dataset, index=None, plot_pred=False, model =None, device="cpu"):
+def plot_img_mask_pred(dataset, index=None, plot_pred=False, model=None, device="cpu"):
     """
-    Plot the image, mask, and prediction
+    Plot the image, mask, and prediction from a given dataset.
 
-    Args:
-        dataset (torch.utils.data.Dataset): Dataset containing images and masks.
-        index (int): Index of the image to plot (default: None).
-        plot_pred (bool): Flag to plot the prediction (default: False).
-        model (torch.nn.Module): Model used for prediction (default: None).
-        device (str): Device to use for prediction (default: "cpu").
-    
-    References: This function is adapted from the following source:
-    -----------
+    This function visualizes the original image, ground truth mask, and (optionally) the predicted mask 
+    using a trained model. The function displays the image, ground truth mask, and model predictions side by side.
+
+    Parameters
+    ----------
+    dataset : torch.utils.data.Dataset
+        Dataset containing images and masks in the format (image, mask).
+    index : int, optional
+        Index of the image to plot. If not provided, a random index is selected. Default is None.
+    plot_pred : bool, optional
+        Flag indicating whether to plot the model's prediction. Default is False.
+    model : torch.nn.Module, optional
+        The model used for generating predictions. Required if `plot_pred` is True. Default is None.
+    device : str, optional
+        Device to use for generating predictions (e.g., "cpu" or "cuda"). Default is "cpu".
+
+    References
+    ----------
     - Title: ISIC 2016 Lesion Segmentation Challenge
     - Author: an-eve
     - Repository: https://github.com/an-eve/ISIC-2016-lesion-segmentation-challenge/blob/main/helper_plotting.py
 
+    Examples
+    --------
+    >>> # Plot image and mask from the dataset
+    >>> plot_img_mask_pred(dataset, index=5)
+
+    >>> # Plot image, mask, and prediction using a trained model
+    >>> plot_img_mask_pred(dataset, index=5, plot_pred=True, model=trained_model, device="cuda")
     """
 
     if not index:
