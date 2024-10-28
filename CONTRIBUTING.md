@@ -107,7 +107,9 @@ To update the Sphinx documentation, follow these steps:
     ```
     
 2. **Change Release version of Package if necessary in `conf.py`**:
-
+    ```bash
+    release = {MOST_RECENT_PACKAGE_RELEASE_VERSION}
+    ```
 
 3. **Regenerate `.rst` files using `sphinx-apidoc`**:
 
