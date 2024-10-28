@@ -4,9 +4,10 @@ from models.attention_unet import AttUNet
 from models.trans_unet import TransUNet
 from utils.preparation_tools import prepare_datasets
 from results.evaluator import Evaluator
+from results.plots import plot_img_mask_pred
+
 from torch.utils.data import DataLoader
 from torch.nn import DataParallel
-from results.plots import plot_img_mask_pred
 import torch
 
 """
