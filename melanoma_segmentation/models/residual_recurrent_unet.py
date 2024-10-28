@@ -224,3 +224,8 @@ class R2UNet(nn.Module):
 
         d1 = self.upconv1(d2)  # (B, 32, H, W)
         d1 = torch.cat((x1, d1), dim=1)  # Concatenate with encoder1 output
+
+        out = self.decoder1(d1)  # (B, 32, H, W)
+        out = self.Conv_1x1(out)
+
+        return out
