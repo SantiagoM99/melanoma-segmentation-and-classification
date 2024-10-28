@@ -72,18 +72,6 @@ To upload the built package to a repository like TestPyPI or PyPI, follow these 
     twine upload dist/*
     ```
 
-## Running Functionalities (Notebook)
-
-To make changes and run some functionalities locally, follow these steps:
-
-1. **Set up the virtual environment**:
-
-    - Create and activate a virtual environment as shown above.
-
-2. **Run scripts**:
-
-    You can run the scripts located in `seeker/src/scripts/` using the commented commands inside each script file. Open the terminal and run the commands to execute the script.
-
 ## Viewing the Documentation
 
 To view the documentation locally:
