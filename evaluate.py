@@ -19,7 +19,7 @@ split_val = CONFIG["split_val"]
 split_test = CONFIG["split_test"]
 image_size = CONFIG["image_size"]
 batch_size = CONFIG["batch_size"]
-model_path = CONFIG["model_path"]+"attunet_128_aug.pth"
+model_path = CONFIG["model_path"]+"unet_128.pth"
 device = CONFIG["device"]
 
 CONFIG_FINAL = CONFIG.copy()
@@ -27,12 +27,12 @@ CONFIG_FINAL["image_size"] = 128
 
 train_dataset, val_dataset, test_dataset = prepare_datasets(CONFIG_FINAL, train_transform_type="train")
 
-model = DataParallel(AttUNet())
+model = DataParallel(UNet())
 model.load_state_dict(torch.load(model_path, map_location=device))
 model.to(device)
 
 
-test_dataloader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
+test_dataloader = DataLoader(test_dataset, batch_size=1, shuffle=False)
 
 
 evaluator = Evaluator(model_path, model, test_dataloader, device)
