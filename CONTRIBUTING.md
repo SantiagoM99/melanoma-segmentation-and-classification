@@ -105,14 +105,17 @@ To update the Sphinx documentation, follow these steps:
     ```bash
     find docs/source/ -type f ! -name 'index.rst' -delete
     ```
+    
+2. **Change Release version of Package if necessary in `conf.py` **:
 
-2. **Regenerate `.rst` files using `sphinx-apidoc`**:
+
+3. **Regenerate `.rst` files using `sphinx-apidoc`**:
 
     ```bash
     sphinx-apidoc -o docs/source/ melanoma_segmentation/
     ```
 
-3. **Rebuild the documentation**:
+4. **Rebuild the documentation**:
 
     ```bash
     cd docs
