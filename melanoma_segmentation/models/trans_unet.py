@@ -246,3 +246,55 @@ class TransUNet(nn.Module):
         x3 = self.encoder3(x3)
 
         x4 = self.pool
+        x1 = self.encoder1(x)
+        x2 = self.pool1(x1)
+        x2 = self.encoder2(x2)
+
+        x3 = self.pool2(x2)
+        x3 = self.encoder3(x3)
+
+        x4 = self.pool3(x3)
+        x4 = self.encoder4(x4)
+
+        # Project the channels from 512 to transformer_dim (256)
+        x_projected = self.encoder_projection(x4)  # (B, transformer_dim, H//8, W//8)
+
+        # Get the spatial dimensions (H and W) of x_projected
+        B, C, H, W = x_projected.shape
+
+        # Flatten and pass through transformer blocks
+        x_flattened = self.flatten(x_projected)  # (B, transformer_dim, H*W)
+
+        # Add positional embeddings
+        pos_embed = self.position_embeddings[:, :, :H * W]  # Ensure size matches with x_flattened
+        x_flattened += pos_embed
+
+        x_transformed = x_flattened.permute(2, 0, 1)  # (H*W, B, transformer_dim)
+
+        for block in self.transformer_blocks:
+            x_transformed = block(x_transformed)
+
+        # Unflatten back to original dimensions (adjusted for transformer_dim)
+        x_transformed = x_transformed.permute(1, 2, 0).view(B, C, H, W)
+
+        # Decoding path with skip connections
+        d4 = self.upconv4(x_transformed)
+        d4 = torch.cat((d4, x3), dim=1)
+        d4 = self.decoder4(d4)
+
+        d3 = self.upconv3(d4)
+        d3 = torch.cat((d3, x2), dim=1)
+        d3 = self.decoder3(d3)
+
+        d2 = self.upconv2(d3)
+        d2 = torch.cat((d2, x1), dim=1)
+        d2 = self.decoder2(d2)
+
+        d1 = self.upconv1(d2)
+        d1 = self.decoder1(d1)
+
+        output = self.Conv_1x1(d1)
+
+        output = F.interpolate(output, size=(128, 128), mode='bilinear', align_corners=False)
+
+        return output
