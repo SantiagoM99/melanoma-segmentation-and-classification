@@ -59,6 +59,7 @@ def get_transforms(image_size):
             albumentations.HorizontalFlip(p=0.5),
             albumentations.RandomBrightness(limit=0.2, p=0.75),
             albumentations.RandomContrast(limit=0.2, p=0.75),
+            #Mejor no usar estos aumentos
             albumentations.OneOf(
                 [
                     albumentations.MotionBlur(blur_limit=5),
@@ -68,6 +69,7 @@ def get_transforms(image_size):
                 ],
                 p=0.7,
             ),
+            #Esto si? Maybe no
             albumentations.OneOf(
                 [
                     albumentations.OpticalDistortion(distort_limit=1.0),
