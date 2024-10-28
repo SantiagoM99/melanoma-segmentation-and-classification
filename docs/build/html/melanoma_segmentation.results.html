@@ -1,0 +1,840 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>melanoma_segmentation.results package &#8212; Melanoma Segmentation 1.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=fc837d61"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'melanoma_segmentation.results';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Melanoma Segmentation 1.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="melanoma_segmentation.configs.html">melanoma_segmentation.configs package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="melanoma_segmentation.datasets.html">melanoma_segmentation.datasets package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="melanoma_segmentation.models.html">melanoma_segmentation.models package</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">melanoma_segmentation.results package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="melanoma_segmentation.utils.html">melanoma_segmentation.utils package</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">melanoma_segmentation.results package</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="melanoma-segmentation-results-package">
+<h1>melanoma_segmentation.results package<a class="headerlink" href="#melanoma-segmentation-results-package" title="Link to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-melanoma_segmentation.results.evaluator">
+<span id="melanoma-segmentation-results-evaluator-module"></span><h2>melanoma_segmentation.results.evaluator module<a class="headerlink" href="#module-melanoma_segmentation.results.evaluator" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.evaluator.Evaluator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">melanoma_segmentation.results.evaluator.</span></span><span class="sig-name descname"><span class="pre">Evaluator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_dataloader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melanoma_segmentation.results.evaluator.Evaluator" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to evaluate a segmentation model using metrics such as Dice coefficient, IoU, accuracy, and recall.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.evaluator.Evaluator.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#melanoma_segmentation.results.evaluator.Evaluator.model" title="Link to this definition">#</a></dt>
+<dd><p>The PyTorch model to evaluate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.Module</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.evaluator.Evaluator.test_dataloader">
+<span class="sig-name descname"><span class="pre">test_dataloader</span></span><a class="headerlink" href="#melanoma_segmentation.results.evaluator.Evaluator.test_dataloader" title="Link to this definition">#</a></dt>
+<dd><p>The DataLoader providing test images and masks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataLoader</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.evaluator.Evaluator.device">
+<span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#melanoma_segmentation.results.evaluator.Evaluator.device" title="Link to this definition">#</a></dt>
+<dd><p>The device to run the evaluation on.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.device</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#melanoma_segmentation.results.evaluator.Evaluator.accuracy" title="melanoma_segmentation.results.evaluator.Evaluator.accuracy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">accuracy</span></code></a>(preds, targets[, smooth])</p></td>
+<td><p>Compute the accuracy between predicted and target masks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#melanoma_segmentation.results.evaluator.Evaluator.dice_coefficient" title="melanoma_segmentation.results.evaluator.Evaluator.dice_coefficient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dice_coefficient</span></code></a>(preds, targets[, smooth])</p></td>
+<td><p>Compute the Dice coefficient between predicted and target masks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#melanoma_segmentation.results.evaluator.Evaluator.evaluate" title="melanoma_segmentation.results.evaluator.Evaluator.evaluate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate</span></code></a>()</p></td>
+<td><p>Evaluate the model on the test dataset using Dice, IoU, accuracy, and recall.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#melanoma_segmentation.results.evaluator.Evaluator.iou_score" title="melanoma_segmentation.results.evaluator.Evaluator.iou_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iou_score</span></code></a>(preds, targets[, smooth])</p></td>
+<td><p>Compute the Intersection over Union (IoU) between predicted and target masks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#melanoma_segmentation.results.evaluator.Evaluator.recall" title="melanoma_segmentation.results.evaluator.Evaluator.recall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">recall</span></code></a>(preds, targets[, smooth])</p></td>
+<td><p>Compute the recall between predicted and target masks.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.evaluator.Evaluator.accuracy">
+<span class="sig-name descname"><span class="pre">accuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melanoma_segmentation.results.evaluator.Evaluator.accuracy" title="Link to this definition">#</a></dt>
+<dd><p>Compute the accuracy between predicted and target masks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>preds</strong> (<em>torch.Tensor</em>) – Predicted mask.</p></li>
+<li><p><strong>targets</strong> (<em>torch.Tensor</em>) – Ground truth mask.</p></li>
+<li><p><strong>smooth</strong> (<em>float</em><em>, </em><em>optional</em>) – Smoothing constant to avoid division by zero. Defaults to 1e-6.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Accuracy score.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.evaluator.Evaluator.dice_coefficient">
+<span class="sig-name descname"><span class="pre">dice_coefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melanoma_segmentation.results.evaluator.Evaluator.dice_coefficient" title="Link to this definition">#</a></dt>
+<dd><p>Compute the Dice coefficient between predicted and target masks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>preds</strong> (<em>torch.Tensor</em>) – Predicted mask.</p></li>
+<li><p><strong>targets</strong> (<em>torch.Tensor</em>) – Ground truth mask.</p></li>
+<li><p><strong>smooth</strong> (<em>float</em><em>, </em><em>optional</em>) – Smoothing constant to avoid division by zero. Defaults to 1e-6.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dice coefficient.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.evaluator.Evaluator.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#melanoma_segmentation.results.evaluator.Evaluator.evaluate" title="Link to this definition">#</a></dt>
+<dd><p>Evaluate the model on the test dataset using Dice, IoU, accuracy, and recall.</p>
+<p>Also tracks the indices of the images with the highest and lowest scores for each metric.</p>
+<p>For each metric, the indices are stored in the following order:
+- Dice: max_indices[0], min_indices[0]
+- IoU: max_indices[1], min_indices[1]
+- Accuracy: max_indices[2], min_indices[2]
+- Recall: max_indices[3], min_indices[3]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A tuple containing:
+- avg_dice (float): Average Dice coefficient.
+- avg_iou (float): Average IoU score.
+- avg_accuracy (float): Average accuracy score.
+- avg_recall (float): Average recall score.
+- max_indices (list): Indices of the images with the highest Dice, IoU, accuracy, and recall.
+- min_indices (list): Indices of the images with the lowest Dice, IoU, accuracy, and recall.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.evaluator.Evaluator.iou_score">
+<span class="sig-name descname"><span class="pre">iou_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melanoma_segmentation.results.evaluator.Evaluator.iou_score" title="Link to this definition">#</a></dt>
+<dd><p>Compute the Intersection over Union (IoU) between predicted and target masks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>preds</strong> (<em>torch.Tensor</em>) – Predicted mask.</p></li>
+<li><p><strong>targets</strong> (<em>torch.Tensor</em>) – Ground truth mask.</p></li>
+<li><p><strong>smooth</strong> (<em>float</em><em>, </em><em>optional</em>) – Smoothing constant to avoid division by zero. Defaults to 1e-6.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>IoU score.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.evaluator.Evaluator.recall">
+<span class="sig-name descname"><span class="pre">recall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melanoma_segmentation.results.evaluator.Evaluator.recall" title="Link to this definition">#</a></dt>
+<dd><p>Compute the recall between predicted and target masks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>preds</strong> (<em>torch.Tensor</em>) – Predicted mask.</p></li>
+<li><p><strong>targets</strong> (<em>torch.Tensor</em>) – Ground truth mask.</p></li>
+<li><p><strong>smooth</strong> (<em>float</em><em>, </em><em>optional</em>) – Smoothing constant to avoid division by zero. Defaults to 1e-6.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Recall score.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-melanoma_segmentation.results.plots">
+<span id="melanoma-segmentation-results-plots-module"></span><h2>melanoma_segmentation.results.plots module<a class="headerlink" href="#module-melanoma_segmentation.results.plots" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.plots.plot_img_mask_pred">
+<span class="sig-prename descclassname"><span class="pre">melanoma_segmentation.results.plots.</span></span><span class="sig-name descname"><span class="pre">plot_img_mask_pred</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_pred</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melanoma_segmentation.results.plots.plot_img_mask_pred" title="Link to this definition">#</a></dt>
+<dd><p>Plot the image, mask, and prediction from a given dataset.</p>
+<p>This function visualizes the original image, ground truth mask, and (optionally) the predicted mask
+using a trained model. The function displays the image, ground truth mask, and model predictions side by side.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>torch.utils.data.Dataset</em>) – Dataset containing images and masks in the format (image, mask).</p></li>
+<li><p><strong>index</strong> (<em>int</em><em>, </em><em>optional</em>) – Index of the image to plot. If not provided, a random index is selected. Default is None.</p></li>
+<li><p><strong>plot_pred</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag indicating whether to plot the model’s prediction. Default is False.</p></li>
+<li><p><strong>model</strong> (<em>torch.nn.Module</em><em>, </em><em>optional</em>) – The model used for generating predictions. Required if <cite>plot_pred</cite> is True. Default is None.</p></li>
+<li><p><strong>device</strong> (<em>str</em><em>, </em><em>optional</em>) – Device to use for generating predictions (e.g., “cpu” or “cuda”). Default is “cpu”.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<ul class="simple">
+<li><p>Title: ISIC 2016 Lesion Segmentation Challenge</p></li>
+<li><p>Author: an-eve</p></li>
+<li><p>Repository: <a class="github reference external" href="https://github.com/an-eve/ISIC-2016-lesion-segmentation-challenge/blob/main/helper_plotting.py">an-eve/ISIC-2016-lesion-segmentation-challenge</a></p></li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Plot image and mask from the dataset</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_img_mask_pred</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Plot image, mask, and prediction using a trained model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_img_mask_pred</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">plot_pred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">trained_model</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-melanoma_segmentation.results">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-melanoma_segmentation.results" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.Evaluator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">melanoma_segmentation.results.</span></span><span class="sig-name descname"><span class="pre">Evaluator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_dataloader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melanoma_segmentation.results.Evaluator" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to evaluate a segmentation model using metrics such as Dice coefficient, IoU, accuracy, and recall.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.Evaluator.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#melanoma_segmentation.results.Evaluator.model" title="Link to this definition">#</a></dt>
+<dd><p>The PyTorch model to evaluate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>nn.Module</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.Evaluator.test_dataloader">
+<span class="sig-name descname"><span class="pre">test_dataloader</span></span><a class="headerlink" href="#melanoma_segmentation.results.Evaluator.test_dataloader" title="Link to this definition">#</a></dt>
+<dd><p>The DataLoader providing test images and masks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataLoader</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.Evaluator.device">
+<span class="sig-name descname"><span class="pre">device</span></span><a class="headerlink" href="#melanoma_segmentation.results.Evaluator.device" title="Link to this definition">#</a></dt>
+<dd><p>The device to run the evaluation on.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.device</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#melanoma_segmentation.results.Evaluator.accuracy" title="melanoma_segmentation.results.Evaluator.accuracy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">accuracy</span></code></a>(preds, targets[, smooth])</p></td>
+<td><p>Compute the accuracy between predicted and target masks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#melanoma_segmentation.results.Evaluator.dice_coefficient" title="melanoma_segmentation.results.Evaluator.dice_coefficient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dice_coefficient</span></code></a>(preds, targets[, smooth])</p></td>
+<td><p>Compute the Dice coefficient between predicted and target masks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#melanoma_segmentation.results.Evaluator.evaluate" title="melanoma_segmentation.results.Evaluator.evaluate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">evaluate</span></code></a>()</p></td>
+<td><p>Evaluate the model on the test dataset using Dice, IoU, accuracy, and recall.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#melanoma_segmentation.results.Evaluator.iou_score" title="melanoma_segmentation.results.Evaluator.iou_score"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iou_score</span></code></a>(preds, targets[, smooth])</p></td>
+<td><p>Compute the Intersection over Union (IoU) between predicted and target masks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#melanoma_segmentation.results.Evaluator.recall" title="melanoma_segmentation.results.Evaluator.recall"><code class="xref py py-obj docutils literal notranslate"><span class="pre">recall</span></code></a>(preds, targets[, smooth])</p></td>
+<td><p>Compute the recall between predicted and target masks.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.Evaluator.accuracy">
+<span class="sig-name descname"><span class="pre">accuracy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melanoma_segmentation.results.Evaluator.accuracy" title="Link to this definition">#</a></dt>
+<dd><p>Compute the accuracy between predicted and target masks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>preds</strong> (<em>torch.Tensor</em>) – Predicted mask.</p></li>
+<li><p><strong>targets</strong> (<em>torch.Tensor</em>) – Ground truth mask.</p></li>
+<li><p><strong>smooth</strong> (<em>float</em><em>, </em><em>optional</em>) – Smoothing constant to avoid division by zero. Defaults to 1e-6.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Accuracy score.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.Evaluator.dice_coefficient">
+<span class="sig-name descname"><span class="pre">dice_coefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melanoma_segmentation.results.Evaluator.dice_coefficient" title="Link to this definition">#</a></dt>
+<dd><p>Compute the Dice coefficient between predicted and target masks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>preds</strong> (<em>torch.Tensor</em>) – Predicted mask.</p></li>
+<li><p><strong>targets</strong> (<em>torch.Tensor</em>) – Ground truth mask.</p></li>
+<li><p><strong>smooth</strong> (<em>float</em><em>, </em><em>optional</em>) – Smoothing constant to avoid division by zero. Defaults to 1e-6.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dice coefficient.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.Evaluator.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#melanoma_segmentation.results.Evaluator.evaluate" title="Link to this definition">#</a></dt>
+<dd><p>Evaluate the model on the test dataset using Dice, IoU, accuracy, and recall.</p>
+<p>Also tracks the indices of the images with the highest and lowest scores for each metric.</p>
+<p>For each metric, the indices are stored in the following order:
+- Dice: max_indices[0], min_indices[0]
+- IoU: max_indices[1], min_indices[1]
+- Accuracy: max_indices[2], min_indices[2]
+- Recall: max_indices[3], min_indices[3]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A tuple containing:
+- avg_dice (float): Average Dice coefficient.
+- avg_iou (float): Average IoU score.
+- avg_accuracy (float): Average accuracy score.
+- avg_recall (float): Average recall score.
+- max_indices (list): Indices of the images with the highest Dice, IoU, accuracy, and recall.
+- min_indices (list): Indices of the images with the lowest Dice, IoU, accuracy, and recall.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.Evaluator.iou_score">
+<span class="sig-name descname"><span class="pre">iou_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melanoma_segmentation.results.Evaluator.iou_score" title="Link to this definition">#</a></dt>
+<dd><p>Compute the Intersection over Union (IoU) between predicted and target masks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>preds</strong> (<em>torch.Tensor</em>) – Predicted mask.</p></li>
+<li><p><strong>targets</strong> (<em>torch.Tensor</em>) – Ground truth mask.</p></li>
+<li><p><strong>smooth</strong> (<em>float</em><em>, </em><em>optional</em>) – Smoothing constant to avoid division by zero. Defaults to 1e-6.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>IoU score.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.Evaluator.recall">
+<span class="sig-name descname"><span class="pre">recall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melanoma_segmentation.results.Evaluator.recall" title="Link to this definition">#</a></dt>
+<dd><p>Compute the recall between predicted and target masks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>preds</strong> (<em>torch.Tensor</em>) – Predicted mask.</p></li>
+<li><p><strong>targets</strong> (<em>torch.Tensor</em>) – Ground truth mask.</p></li>
+<li><p><strong>smooth</strong> (<em>float</em><em>, </em><em>optional</em>) – Smoothing constant to avoid division by zero. Defaults to 1e-6.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Recall score.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="melanoma_segmentation.results.plot_img_mask_pred">
+<span class="sig-prename descclassname"><span class="pre">melanoma_segmentation.results.</span></span><span class="sig-name descname"><span class="pre">plot_img_mask_pred</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_pred</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#melanoma_segmentation.results.plot_img_mask_pred" title="Link to this definition">#</a></dt>
+<dd><p>Plot the image, mask, and prediction from a given dataset.</p>
+<p>This function visualizes the original image, ground truth mask, and (optionally) the predicted mask
+using a trained model. The function displays the image, ground truth mask, and model predictions side by side.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>torch.utils.data.Dataset</em>) – Dataset containing images and masks in the format (image, mask).</p></li>
+<li><p><strong>index</strong> (<em>int</em><em>, </em><em>optional</em>) – Index of the image to plot. If not provided, a random index is selected. Default is None.</p></li>
+<li><p><strong>plot_pred</strong> (<em>bool</em><em>, </em><em>optional</em>) – Flag indicating whether to plot the model’s prediction. Default is False.</p></li>
+<li><p><strong>model</strong> (<em>torch.nn.Module</em><em>, </em><em>optional</em>) – The model used for generating predictions. Required if <cite>plot_pred</cite> is True. Default is None.</p></li>
+<li><p><strong>device</strong> (<em>str</em><em>, </em><em>optional</em>) – Device to use for generating predictions (e.g., “cpu” or “cuda”). Default is “cpu”.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<ul class="simple">
+<li><p>Title: ISIC 2016 Lesion Segmentation Challenge</p></li>
+<li><p>Author: an-eve</p></li>
+<li><p>Repository: <a class="github reference external" href="https://github.com/an-eve/ISIC-2016-lesion-segmentation-challenge/blob/main/helper_plotting.py">an-eve/ISIC-2016-lesion-segmentation-challenge</a></p></li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Plot image and mask from the dataset</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_img_mask_pred</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Plot image, mask, and prediction using a trained model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_img_mask_pred</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">plot_pred</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">trained_model</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-melanoma_segmentation.results.evaluator">melanoma_segmentation.results.evaluator module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.evaluator.Evaluator"><code class="docutils literal notranslate"><span class="pre">Evaluator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.evaluator.Evaluator.model"><code class="docutils literal notranslate"><span class="pre">Evaluator.model</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.evaluator.Evaluator.test_dataloader"><code class="docutils literal notranslate"><span class="pre">Evaluator.test_dataloader</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.evaluator.Evaluator.device"><code class="docutils literal notranslate"><span class="pre">Evaluator.device</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.evaluator.Evaluator.accuracy"><code class="docutils literal notranslate"><span class="pre">Evaluator.accuracy()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.evaluator.Evaluator.dice_coefficient"><code class="docutils literal notranslate"><span class="pre">Evaluator.dice_coefficient()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.evaluator.Evaluator.evaluate"><code class="docutils literal notranslate"><span class="pre">Evaluator.evaluate()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.evaluator.Evaluator.iou_score"><code class="docutils literal notranslate"><span class="pre">Evaluator.iou_score()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.evaluator.Evaluator.recall"><code class="docutils literal notranslate"><span class="pre">Evaluator.recall()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-melanoma_segmentation.results.plots">melanoma_segmentation.results.plots module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.plots.plot_img_mask_pred"><code class="docutils literal notranslate"><span class="pre">plot_img_mask_pred()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-melanoma_segmentation.results">Module contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.Evaluator"><code class="docutils literal notranslate"><span class="pre">Evaluator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.Evaluator.model"><code class="docutils literal notranslate"><span class="pre">Evaluator.model</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.Evaluator.test_dataloader"><code class="docutils literal notranslate"><span class="pre">Evaluator.test_dataloader</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.Evaluator.device"><code class="docutils literal notranslate"><span class="pre">Evaluator.device</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.Evaluator.accuracy"><code class="docutils literal notranslate"><span class="pre">Evaluator.accuracy()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.Evaluator.dice_coefficient"><code class="docutils literal notranslate"><span class="pre">Evaluator.dice_coefficient()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.Evaluator.evaluate"><code class="docutils literal notranslate"><span class="pre">Evaluator.evaluate()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.Evaluator.iou_score"><code class="docutils literal notranslate"><span class="pre">Evaluator.iou_score()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.Evaluator.recall"><code class="docutils literal notranslate"><span class="pre">Evaluator.recall()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melanoma_segmentation.results.plot_img_mask_pred"><code class="docutils literal notranslate"><span class="pre">plot_img_mask_pred()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="_sources/melanoma_segmentation.results.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Santiago Martínez Novoa.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

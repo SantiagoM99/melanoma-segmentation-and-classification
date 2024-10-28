@@ -1,0 +1,905 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index &#8212; Melanoma Segmentation 1.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=fc837d61"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Melanoma Segmentation 1.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ 
+</div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.Evaluator.accuracy">accuracy() (melanoma_segmentation.results.Evaluator method)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.evaluator.Evaluator.accuracy">(melanoma_segmentation.results.evaluator.Evaluator method)</a>
+</li>
+      </ul></li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.attention_unet.AttentionBlock">AttentionBlock (class in melanoma_segmentation.models.attention_unet)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.TransformerBlock.attn">attn (melanoma_segmentation.models.trans_unet.TransformerBlock attribute)</a>
+</li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.AttUNet">AttUNet (class in melanoma_segmentation.models)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.attention_unet.AttUNet">(class in melanoma_segmentation.models.attention_unet)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.DepthwiseConvBlock.bn1">bn1 (melanoma_segmentation.models.trans_unet.DepthwiseConvBlock attribute)</a>
+</li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.DepthwiseConvBlock.bn2">bn2 (melanoma_segmentation.models.trans_unet.DepthwiseConvBlock attribute)</a>
+</li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.attention_unet.AttUNet.bottleneck">bottleneck (melanoma_segmentation.models.attention_unet.AttUNet attribute)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.AttUNet.bottleneck">(melanoma_segmentation.models.AttUNet attribute)</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.R2UNet.bottleneck">(melanoma_segmentation.models.R2UNet attribute)</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.residual_recurrent_unet.R2UNet.bottleneck">(melanoma_segmentation.models.residual_recurrent_unet.R2UNet attribute)</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.UNet.bottleneck">(melanoma_segmentation.models.UNet attribute)</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.unet.UNet.bottleneck">(melanoma_segmentation.models.unet.UNet attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.image_data.ImageDataset.check_dimensions">check_dimensions() (melanoma_segmentation.datasets.image_data.ImageDataset method)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.ImageDataset.check_dimensions">(melanoma_segmentation.datasets.ImageDataset method)</a>
+</li>
+      </ul></li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.residual_recurrent_unet.RecurrentBlock.conv">conv (melanoma_segmentation.models.residual_recurrent_unet.RecurrentBlock attribute)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.unet.ConvBlock.conv">(melanoma_segmentation.models.unet.ConvBlock attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.DepthwiseConvBlock.conv1">conv1 (melanoma_segmentation.models.trans_unet.DepthwiseConvBlock attribute)</a>
+</li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.residual_recurrent_unet.ResidualRecurrentBlock.conv1x1">conv1x1 (melanoma_segmentation.models.residual_recurrent_unet.ResidualRecurrentBlock attribute)</a>
+</li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.DepthwiseConvBlock.conv2">conv2 (melanoma_segmentation.models.trans_unet.DepthwiseConvBlock attribute)</a>
+</li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.attention_unet.AttUNet.Conv_1x1">Conv_1x1 (melanoma_segmentation.models.attention_unet.AttUNet attribute)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.AttUNet.Conv_1x1">(melanoma_segmentation.models.AttUNet attribute)</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.R2UNet.Conv_1x1">(melanoma_segmentation.models.R2UNet attribute)</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.residual_recurrent_unet.R2UNet.Conv_1x1">(melanoma_segmentation.models.residual_recurrent_unet.R2UNet attribute)</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.TransUNet.Conv_1x1">(melanoma_segmentation.models.trans_unet.TransUNet attribute)</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.TransUNet.Conv_1x1">(melanoma_segmentation.models.TransUNet attribute)</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.UNet.Conv_1x1">(melanoma_segmentation.models.UNet attribute)</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.unet.UNet.Conv_1x1">(melanoma_segmentation.models.unet.UNet attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.unet.ConvBlock">ConvBlock (class in melanoma_segmentation.models.unet)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.DataSplitter">DataSplitter (class in melanoma_segmentation.datasets)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.split_data.DataSplitter">(class in melanoma_segmentation.datasets.split_data)</a>
+</li>
+      </ul></li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.DepthwiseConvBlock">DepthwiseConvBlock (class in melanoma_segmentation.models.trans_unet)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.Evaluator.device">device (melanoma_segmentation.results.Evaluator attribute)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.evaluator.Evaluator.device">(melanoma_segmentation.results.evaluator.Evaluator attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.Evaluator.dice_coefficient">dice_coefficient() (melanoma_segmentation.results.Evaluator method)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.evaluator.Evaluator.dice_coefficient">(melanoma_segmentation.results.evaluator.Evaluator method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.Evaluator.evaluate">evaluate() (melanoma_segmentation.results.Evaluator method)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.evaluator.Evaluator.evaluate">(melanoma_segmentation.results.evaluator.Evaluator method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.Evaluator">Evaluator (class in melanoma_segmentation.results)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.evaluator.Evaluator">(class in melanoma_segmentation.results.evaluator)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.models.html#id1">forward() (melanoma_segmentation.models.attention_unet.AttentionBlock method)</a>, <a href="melanoma_segmentation.models.html#melanoma_segmentation.models.attention_unet.AttentionBlock.forward">[1]</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.models.html#id0">(melanoma_segmentation.models.attention_unet.AttUNet method)</a>, <a href="melanoma_segmentation.models.html#melanoma_segmentation.models.attention_unet.AttUNet.forward">[1]</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#id11">(melanoma_segmentation.models.AttUNet method)</a>, <a href="melanoma_segmentation.models.html#melanoma_segmentation.models.AttUNet.forward">[1]</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#id12">(melanoma_segmentation.models.R2UNet method)</a>, <a href="melanoma_segmentation.models.html#melanoma_segmentation.models.R2UNet.forward">[1]</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#id2">(melanoma_segmentation.models.residual_recurrent_unet.R2UNet method)</a>, <a href="melanoma_segmentation.models.html#melanoma_segmentation.models.residual_recurrent_unet.R2UNet.forward">[1]</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#id3">(melanoma_segmentation.models.residual_recurrent_unet.RecurrentBlock method)</a>, <a href="melanoma_segmentation.models.html#melanoma_segmentation.models.residual_recurrent_unet.RecurrentBlock.forward">[1]</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#id4">(melanoma_segmentation.models.residual_recurrent_unet.ResidualRecurrentBlock method)</a>, <a href="melanoma_segmentation.models.html#melanoma_segmentation.models.residual_recurrent_unet.ResidualRecurrentBlock.forward">[1]</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#id5">(melanoma_segmentation.models.trans_unet.DepthwiseConvBlock method)</a>, <a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.DepthwiseConvBlock.forward">[1]</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#id7">(melanoma_segmentation.models.trans_unet.TransformerBlock method)</a>, <a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.TransformerBlock.forward">[1]</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#id6">(melanoma_segmentation.models.trans_unet.TransUNet method)</a>, <a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.TransUNet.forward">[1]</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#id13">(melanoma_segmentation.models.TransUNet method)</a>, <a href="melanoma_segmentation.models.html#melanoma_segmentation.models.TransUNet.forward">[1]</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#id14">(melanoma_segmentation.models.UNet method)</a>, <a href="melanoma_segmentation.models.html#melanoma_segmentation.models.UNet.forward">[1]</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#id8">(melanoma_segmentation.models.unet.ConvBlock method)</a>, <a href="melanoma_segmentation.models.html#melanoma_segmentation.models.unet.ConvBlock.forward">[1]</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#id9">(melanoma_segmentation.models.unet.UNet method)</a>, <a href="melanoma_segmentation.models.html#melanoma_segmentation.models.unet.UNet.forward">[1]</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#id10">(melanoma_segmentation.models.unet.UpConv method)</a>, <a href="melanoma_segmentation.models.html#melanoma_segmentation.models.unet.UpConv.forward">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.image_data.ImageDataset.get_image_and_gt_paths">get_image_and_gt_paths() (melanoma_segmentation.datasets.image_data.ImageDataset method)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.ImageDataset.get_image_and_gt_paths">(melanoma_segmentation.datasets.ImageDataset method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.transform.get_transforms">get_transforms() (in module melanoma_segmentation.models.transform)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.ImageDataset">ImageDataset (class in melanoma_segmentation.datasets)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.image_data.ImageDataset">(class in melanoma_segmentation.datasets.image_data)</a>
+</li>
+      </ul></li>
+      <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.data.SkinLesionDataset.img_dir">img_dir (melanoma_segmentation.datasets.data.SkinLesionDataset attribute)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.SkinLesionDataset.img_dir">(melanoma_segmentation.datasets.SkinLesionDataset attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.Evaluator.iou_score">iou_score() (melanoma_segmentation.results.Evaluator method)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.evaluator.Evaluator.iou_score">(melanoma_segmentation.results.evaluator.Evaluator method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.data.SkinLesionDataset.mask_dir">mask_dir (melanoma_segmentation.datasets.data.SkinLesionDataset attribute)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.SkinLesionDataset.mask_dir">(melanoma_segmentation.datasets.SkinLesionDataset attribute)</a>
+</li>
+      </ul></li>
+      <li>
+    melanoma_segmentation
+
+      <ul>
+        <li><a href="melanoma_segmentation.html#module-melanoma_segmentation">module</a>
+</li>
+      </ul></li>
+      <li>
+    melanoma_segmentation.configs
+
+      <ul>
+        <li><a href="melanoma_segmentation.configs.html#module-melanoma_segmentation.configs">module</a>
+</li>
+      </ul></li>
+      <li>
+    melanoma_segmentation.configs.config_setting
+
+      <ul>
+        <li><a href="melanoma_segmentation.configs.html#module-melanoma_segmentation.configs.config_setting">module</a>
+</li>
+      </ul></li>
+      <li>
+    melanoma_segmentation.datasets
+
+      <ul>
+        <li><a href="melanoma_segmentation.datasets.html#module-melanoma_segmentation.datasets">module</a>
+</li>
+      </ul></li>
+      <li>
+    melanoma_segmentation.datasets.data
+
+      <ul>
+        <li><a href="melanoma_segmentation.datasets.html#module-melanoma_segmentation.datasets.data">module</a>
+</li>
+      </ul></li>
+      <li>
+    melanoma_segmentation.datasets.image_data
+
+      <ul>
+        <li><a href="melanoma_segmentation.datasets.html#module-melanoma_segmentation.datasets.image_data">module</a>
+</li>
+      </ul></li>
+      <li>
+    melanoma_segmentation.datasets.split_data
+
+      <ul>
+        <li><a href="melanoma_segmentation.datasets.html#module-melanoma_segmentation.datasets.split_data">module</a>
+</li>
+      </ul></li>
+      <li>
+    melanoma_segmentation.models
+
+      <ul>
+        <li><a href="melanoma_segmentation.models.html#module-melanoma_segmentation.models">module</a>
+</li>
+      </ul></li>
+      <li>
+    melanoma_segmentation.models.attention_unet
+
+      <ul>
+        <li><a href="melanoma_segmentation.models.html#module-melanoma_segmentation.models.attention_unet">module</a>
+</li>
+      </ul></li>
+      <li>
+    melanoma_segmentation.models.residual_recurrent_unet
+
+      <ul>
+        <li><a href="melanoma_segmentation.models.html#module-melanoma_segmentation.models.residual_recurrent_unet">module</a>
+</li>
+      </ul></li>
+      <li>
+    melanoma_segmentation.models.trans_unet
+
+      <ul>
+        <li><a href="melanoma_segmentation.models.html#module-melanoma_segmentation.models.trans_unet">module</a>
+</li>
+      </ul></li>
+      <li>
+    melanoma_segmentation.models.transform
+
+      <ul>
+        <li><a href="melanoma_segmentation.models.html#module-melanoma_segmentation.models.transform">module</a>
+</li>
+      </ul></li>
+      <li>
+    melanoma_segmentation.models.unet
+
+      <ul>
+        <li><a href="melanoma_segmentation.models.html#module-melanoma_segmentation.models.unet">module</a>
+</li>
+      </ul></li>
+      <li>
+    melanoma_segmentation.results
+
+      <ul>
+        <li><a href="melanoma_segmentation.results.html#module-melanoma_segmentation.results">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    melanoma_segmentation.results.evaluator
+
+      <ul>
+        <li><a href="melanoma_segmentation.results.html#module-melanoma_segmentation.results.evaluator">module</a>
+</li>
+      </ul></li>
+      <li>
+    melanoma_segmentation.results.plots
+
+      <ul>
+        <li><a href="melanoma_segmentation.results.html#module-melanoma_segmentation.results.plots">module</a>
+</li>
+      </ul></li>
+      <li>
+    melanoma_segmentation.utils
+
+      <ul>
+        <li><a href="melanoma_segmentation.utils.html#module-melanoma_segmentation.utils">module</a>
+</li>
+      </ul></li>
+      <li>
+    melanoma_segmentation.utils.preparation_tools
+
+      <ul>
+        <li><a href="melanoma_segmentation.utils.html#module-melanoma_segmentation.utils.preparation_tools">module</a>
+</li>
+      </ul></li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.TransformerBlock.mlp">mlp (melanoma_segmentation.models.trans_unet.TransformerBlock attribute)</a>
+</li>
+      <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.Evaluator.model">model (melanoma_segmentation.results.Evaluator attribute)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.evaluator.Evaluator.model">(melanoma_segmentation.results.evaluator.Evaluator attribute)</a>
+</li>
+      </ul></li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="melanoma_segmentation.html#module-melanoma_segmentation">melanoma_segmentation</a>
+</li>
+        <li><a href="melanoma_segmentation.configs.html#module-melanoma_segmentation.configs">melanoma_segmentation.configs</a>
+</li>
+        <li><a href="melanoma_segmentation.configs.html#module-melanoma_segmentation.configs.config_setting">melanoma_segmentation.configs.config_setting</a>
+</li>
+        <li><a href="melanoma_segmentation.datasets.html#module-melanoma_segmentation.datasets">melanoma_segmentation.datasets</a>
+</li>
+        <li><a href="melanoma_segmentation.datasets.html#module-melanoma_segmentation.datasets.data">melanoma_segmentation.datasets.data</a>
+</li>
+        <li><a href="melanoma_segmentation.datasets.html#module-melanoma_segmentation.datasets.image_data">melanoma_segmentation.datasets.image_data</a>
+</li>
+        <li><a href="melanoma_segmentation.datasets.html#module-melanoma_segmentation.datasets.split_data">melanoma_segmentation.datasets.split_data</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#module-melanoma_segmentation.models">melanoma_segmentation.models</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#module-melanoma_segmentation.models.attention_unet">melanoma_segmentation.models.attention_unet</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#module-melanoma_segmentation.models.residual_recurrent_unet">melanoma_segmentation.models.residual_recurrent_unet</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#module-melanoma_segmentation.models.trans_unet">melanoma_segmentation.models.trans_unet</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#module-melanoma_segmentation.models.transform">melanoma_segmentation.models.transform</a>
+</li>
+        <li><a href="melanoma_segmentation.models.html#module-melanoma_segmentation.models.unet">melanoma_segmentation.models.unet</a>
+</li>
+        <li><a href="melanoma_segmentation.results.html#module-melanoma_segmentation.results">melanoma_segmentation.results</a>
+</li>
+        <li><a href="melanoma_segmentation.results.html#module-melanoma_segmentation.results.evaluator">melanoma_segmentation.results.evaluator</a>
+</li>
+        <li><a href="melanoma_segmentation.results.html#module-melanoma_segmentation.results.plots">melanoma_segmentation.results.plots</a>
+</li>
+        <li><a href="melanoma_segmentation.utils.html#module-melanoma_segmentation.utils">melanoma_segmentation.utils</a>
+</li>
+        <li><a href="melanoma_segmentation.utils.html#module-melanoma_segmentation.utils.preparation_tools">melanoma_segmentation.utils.preparation_tools</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.TransformerBlock.norm1">norm1 (melanoma_segmentation.models.trans_unet.TransformerBlock attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.TransformerBlock.norm2">norm2 (melanoma_segmentation.models.trans_unet.TransformerBlock attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.plot_img_mask_pred">plot_img_mask_pred() (in module melanoma_segmentation.results)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.plots.plot_img_mask_pred">(in module melanoma_segmentation.results.plots)</a>
+</li>
+      </ul></li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.DepthwiseConvBlock.pointwise1">pointwise1 (melanoma_segmentation.models.trans_unet.DepthwiseConvBlock attribute)</a>
+</li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.DepthwiseConvBlock.pointwise2">pointwise2 (melanoma_segmentation.models.trans_unet.DepthwiseConvBlock attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.utils.html#melanoma_segmentation.utils.prepare_datasets">prepare_datasets() (in module melanoma_segmentation.utils)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.utils.html#melanoma_segmentation.utils.preparation_tools.prepare_datasets">(in module melanoma_segmentation.utils.preparation_tools)</a>
+</li>
+      </ul></li>
+      <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.DataSplitter.print_split">print_split() (melanoma_segmentation.datasets.DataSplitter method)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.split_data.DataSplitter.print_split">(melanoma_segmentation.datasets.split_data.DataSplitter method)</a>
+</li>
+      </ul></li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.attention_unet.AttentionBlock.psi">psi (melanoma_segmentation.models.attention_unet.AttentionBlock attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.R2UNet">R2UNet (class in melanoma_segmentation.models)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.residual_recurrent_unet.R2UNet">(class in melanoma_segmentation.models.residual_recurrent_unet)</a>
+</li>
+      </ul></li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.residual_recurrent_unet.ResidualRecurrentBlock.rcnn">rcnn (melanoma_segmentation.models.residual_recurrent_unet.ResidualRecurrentBlock attribute)</a>
+</li>
+      <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.Evaluator.recall">recall() (melanoma_segmentation.results.Evaluator method)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.evaluator.Evaluator.recall">(melanoma_segmentation.results.evaluator.Evaluator method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.residual_recurrent_unet.RecurrentBlock">RecurrentBlock (class in melanoma_segmentation.models.residual_recurrent_unet)</a>
+</li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.attention_unet.AttentionBlock.relu">relu (melanoma_segmentation.models.attention_unet.AttentionBlock attribute)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.DepthwiseConvBlock.relu">(melanoma_segmentation.models.trans_unet.DepthwiseConvBlock attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.residual_recurrent_unet.ResidualRecurrentBlock">ResidualRecurrentBlock (class in melanoma_segmentation.models.residual_recurrent_unet)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.SkinLesionDataset">SkinLesionDataset (class in melanoma_segmentation.datasets)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.data.SkinLesionDataset">(class in melanoma_segmentation.datasets.data)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.DataSplitter.split_data">split_data() (melanoma_segmentation.datasets.DataSplitter method)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.split_data.DataSplitter.split_data">(melanoma_segmentation.datasets.split_data.DataSplitter method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.Evaluator.test_dataloader">test_dataloader (melanoma_segmentation.results.Evaluator attribute)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.results.html#melanoma_segmentation.results.evaluator.Evaluator.test_dataloader">(melanoma_segmentation.results.evaluator.Evaluator attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.data.SkinLesionDataset.transform">transform (melanoma_segmentation.datasets.data.SkinLesionDataset attribute)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.datasets.html#melanoma_segmentation.datasets.SkinLesionDataset.transform">(melanoma_segmentation.datasets.SkinLesionDataset attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.TransUNet.transformer_blocks">transformer_blocks (melanoma_segmentation.models.trans_unet.TransUNet attribute)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.TransUNet.transformer_blocks">(melanoma_segmentation.models.TransUNet attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.TransformerBlock">TransformerBlock (class in melanoma_segmentation.models.trans_unet)</a>
+</li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.TransUNet">TransUNet (class in melanoma_segmentation.models)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.trans_unet.TransUNet">(class in melanoma_segmentation.models.trans_unet)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.UNet">UNet (class in melanoma_segmentation.models)</a>
+
+      <ul>
+        <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.unet.UNet">(class in melanoma_segmentation.models.unet)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.unet.UpConv.up">up (melanoma_segmentation.models.unet.UpConv attribute)</a>
+</li>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.unet.UpConv">UpConv (class in melanoma_segmentation.models.unet)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.attention_unet.AttentionBlock.W_g">W_g (melanoma_segmentation.models.attention_unet.AttentionBlock attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="melanoma_segmentation.models.html#melanoma_segmentation.models.attention_unet.AttentionBlock.W_x">W_x (melanoma_segmentation.models.attention_unet.AttentionBlock attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Santiago Martínez Novoa.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
