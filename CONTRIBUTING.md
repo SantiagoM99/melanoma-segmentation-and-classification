@@ -106,7 +106,7 @@ To update the Sphinx documentation, follow these steps:
     find docs/source/ -type f ! -name 'index.rst' -delete
     ```
     
-2. **Change Release version of Package if necessary in `conf.py` **:
+2. **Change Release version of Package if necessary in `conf.py`**:
 
 
 3. **Regenerate `.rst` files using `sphinx-apidoc`**:
