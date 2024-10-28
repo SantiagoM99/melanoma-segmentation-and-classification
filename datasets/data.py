@@ -7,6 +7,18 @@ from torch.utils.data import Dataset
 
 
 class SkinLesionDataset(Dataset):
+    """
+    Custom dataset class for skin lesion segmentation.
+
+    Attributes
+    ----------
+    img_dir : list
+        List of image file paths.
+    mask_dir : list
+        List of mask file paths.
+    transform : albumentations.Compose
+        Image augmentation pipeline.    
+    """
     def __init__(self, img_dir, mask_dir, transform=None):
         self.img_dir = img_dir
         self.mask_dir = mask_dir

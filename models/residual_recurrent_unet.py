@@ -3,7 +3,28 @@ import torch.nn as nn
 from models.unet import UpConv
 
 class RecurrentBlock(nn.Module):
-    def __init__(self, ch_out, t=2):  # t is the number of recurrences
+    """
+    Recurrent block used in the R2U-Net model to apply multiple convolutions on the input feature map.
+
+    Parameters
+    ----------
+    ch_out : int
+        Number of output channels.
+    t : int, optional
+        Number of recurrent steps (default is 2).
+
+    Attributes
+    ----------
+    conv : nn.Sequential
+        A sequence of convolution, batch normalization, and ReLU activation layers.
+
+    Methods
+    -------
+    forward(x)
+        Performs the forward pass of the recurrent block.
+    """
+    
+    def __init__(self, ch_out, t=2):
         super(RecurrentBlock, self).__init__()
         self.t = t
         self.conv = nn.Sequential(
@@ -13,6 +34,19 @@ class RecurrentBlock(nn.Module):
         )
 
     def forward(self, x):
+        """
+        Forward pass for the Recurrent Block.
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            Input tensor of shape (N, C, H, W).
+
+        Returns
+        -------
+        torch.Tensor
+            Output tensor after recurrent convolution operations.
+        """
         for i in range(self.t):
             if i == 0:
                 x1 = self.conv(x)
@@ -20,19 +54,94 @@ class RecurrentBlock(nn.Module):
                 x1 = self.conv(x + x1)
         return x1
 
+
 class ResidualRecurrentBlock(nn.Module):
+    """
+    Residual block with recurrent convolutions for the R2U-Net model.
+
+    Parameters
+    ----------
+    ch_in : int
+        Number of input channels.
+    ch_out : int
+        Number of output channels.
+    t : int, optional
+        Number of recurrent steps (default is 2).
+
+    Attributes
+    ----------
+    conv1x1 : nn.Conv2d
+        A 1x1 convolutional layer to match the dimensions between input and output channels.
+    rcnn : RecurrentBlock
+        A recurrent block for repeated convolution operations.
+
+    Methods
+    -------
+    forward(x)
+        Performs the forward pass of the residual recurrent block.
+    """
+    
     def __init__(self, ch_in, ch_out, t=2):
         super(ResidualRecurrentBlock, self).__init__()
         self.conv1x1 = nn.Conv2d(ch_in, ch_out, kernel_size=1, stride=1, padding=0)
         self.rcnn = RecurrentBlock(ch_out, t=t)
 
     def forward(self, x):
+        """
+        Forward pass for the Residual Recurrent Block.
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            Input tensor of shape (N, C, H, W).
+
+        Returns
+        -------
+        torch.Tensor
+            Output tensor with residual connections.
+        """
         x = self.conv1x1(x)
         x1 = self.rcnn(x)
         return x + x1  # Residual connection
 
 
 class R2UNet(nn.Module):
+    """
+    R2U-Net architecture for image segmentation tasks.
+
+    This model is an extension of U-Net using residual recurrent blocks to improve feature learning
+    by adding recurrent convolutions and residual connections.
+
+    Parameters
+    ----------
+    in_channels : int, optional
+        Number of input channels. Default is 3.
+    out_channels : int, optional
+        Number of output channels. Default is 1.
+    t : int, optional
+        Number of recurrent steps in each block. Default is 2.
+
+    Attributes
+    ----------
+    encoder1, encoder2, encoder3, encoder4 : nn.Sequential
+        Encoder blocks consisting of residual recurrent blocks.
+    pool1, pool2, pool3, pool4 : nn.MaxPool2d
+        Pooling layers for downsampling the feature maps.
+    bottleneck : nn.Sequential
+        Bottleneck block connecting the encoder and decoder paths.
+    upconv1, upconv2, upconv3, upconv4 : UpConv
+        Upsampling layers for increasing the feature map size in the decoder path.
+    decoder1, decoder2, decoder3, decoder4 : nn.Sequential
+        Decoder blocks consisting of residual recurrent blocks.
+    Conv_1x1 : nn.Conv2d
+        Final 1x1 convolutional layer for producing the output segmentation map.
+
+    Methods
+    -------
+    forward(x)
+        Performs the forward pass of the R2U-Net model.
+    """
+    
     def __init__(self, in_channels=3, out_channels=1, t=2):
         super(R2UNet, self).__init__()
 
@@ -69,6 +178,23 @@ class R2UNet(nn.Module):
         self.Conv_1x1 = nn.Conv2d(32, out_channels, kernel_size=1, stride=1, padding=0)
 
     def forward(self, x):
+        """
+        Forward pass for the R2U-Net model.
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            Input tensor of shape (N, C, H, W) where:
+            - N is the batch size
+            - C is the number of input channels
+            - H is the height of the input image
+            - W is the width of the input image
+
+        Returns
+        -------
+        torch.Tensor
+            Output tensor of shape (N, out_channels, H, W).
+        """
         # Encoding path
         x1 = self.encoder1(x)  # (B, 32, H, W)
         x2 = self.pool1(x1)  # (B, 32, H//2, W//2)
@@ -98,9 +224,3 @@ class R2UNet(nn.Module):
 
         d1 = self.upconv1(d2)  # (B, 32, H, W)
         d1 = torch.cat((x1, d1), dim=1)  # Concatenate with encoder1 output
-        d1 = self.decoder1(d1)  # (B, 32, H, W)
-
-        # Final 1x1 conv to get the output
-        output = self.Conv_1x1(d1)  # (B, out_channels, H, W)
-
-        return output

@@ -9,11 +9,37 @@ class DataSplitter:
         """
         Initialize the DataSplitter class with image paths, ground truth paths, and split ratios.
 
-        :param image_paths: The paths to the images.
-        :param gt_paths: The paths to the ground truth masks.
-        :param split_train: The ratio of training data.
-        :param split_val: The ratio of validation data.
-        :param split_test: The ratio of testing data.
+        Attributes
+        ----------
+        image_paths : list
+            List of image file paths.
+        gt_paths : list
+            List of ground truth file paths.
+        split_train : float
+            Ratio of training data.
+        split_val : float
+            Ratio of validation data.
+        split_test : float
+            Ratio of testing data.
+        image_train : list
+            List of training image paths.
+        image_val : list
+            List of validation image paths.
+        image_test : list
+            List of testing image paths.
+        gt_train : list
+            List of training ground truth paths.
+        gt_val : list
+            List of validation ground truth paths.
+        gt_test : list
+            List of testing ground truth paths.
+
+        Methods
+        -------
+        split_data()
+            Split the image and ground truth paths into training, validation, and testing sets.
+        print_split()
+            Print the number of samples in each split.
         """
         self.image_paths = image_paths
         self.gt_paths = gt_paths
@@ -31,6 +57,11 @@ class DataSplitter:
     def split_data(self):
         """
         Split the image and ground truth paths into training, validation, and testing sets.
+
+        Returns
+        -------
+        tuple
+            A tuple containing the training, validation, and testing sets.
         """
         # Split the image and ground truth paths into training and testing sets
         image_train, image_test, gt_train, gt_test = train_test_split(
@@ -67,16 +98,3 @@ class DataSplitter:
         print(f"Training samples: {len(self.image_train)}")
         print(f"Validation samples: {len(self.image_val)}")
         print(f"Testing samples: {len(self.image_test)}")
-
-    def get_splits(self):
-        """
-        Return the training, validation, and testing sets.
-        """
-        return (
-            self.image_train,
-            self.image_val,
-            self.image_test,
-            self.gt_train,
-            self.gt_val,
-            self.gt_test,
-        )

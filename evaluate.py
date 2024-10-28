@@ -9,17 +9,11 @@ from torch.nn import DataParallel
 from results.plots import plot_img_mask_pred
 import torch
 
-# Configuration
-base_dir = CONFIG["base_dir"]
-image_folder = CONFIG["image_folder"]
-gt_folder = CONFIG["gt_folder"]
-model_name = CONFIG["model_name"]
-split_train = CONFIG["split_train"]  
-split_val = CONFIG["split_val"]
-split_test = CONFIG["split_test"]
-image_size = CONFIG["image_size"]
-batch_size = CONFIG["batch_size"]
-model_path = CONFIG["model_path"]+"unet_128.pth"
+"""
+Evaluate the trained model on the test dataset using metrics such as Dice coefficient, IoU, accuracy, and recall.
+"""
+
+model_path = CONFIG["model_path"]+"unet_128_aug.pth"
 device = CONFIG["device"]
 
 CONFIG_FINAL = CONFIG.copy()

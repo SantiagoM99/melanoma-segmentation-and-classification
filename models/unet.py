@@ -2,8 +2,28 @@ import torch
 import torch.nn as nn
 
 
-# Define the conv_block (2 convolution layers + ReLU)
 class ConvBlock(nn.Module):
+    """
+    Convolutional block consisting of two convolution layers with batch normalization and ReLU activation.
+
+    Parameters
+    ----------
+    ch_in : int
+        Number of input channels.
+    ch_out : int
+        Number of output channels.
+
+    Attributes
+    ----------
+    conv : nn.Sequential
+        A sequence of two convolutional layers, each followed by batch normalization and ReLU activation.
+
+    Methods
+    -------
+    forward(x)
+        Performs the forward pass of the convolutional block.
+    """
+
     def __init__(self, ch_in, ch_out):
         super(ConvBlock, self).__init__()
         self.conv = nn.Sequential(
@@ -16,20 +36,100 @@ class ConvBlock(nn.Module):
         )
 
     def forward(self, x):
+        """
+        Forward pass for the ConvBlock.
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            Input tensor of shape (N, C, H, W).
+
+        Returns
+        -------
+        torch.Tensor
+            Output tensor after two convolutional layers with batch normalization and ReLU activation.
+        """
         return self.conv(x)
 
 
-# Define the up_conv block (transposed convolution for upsampling)
 class UpConv(nn.Module):
+    """
+    Upsampling block using transposed convolution to increase spatial resolution.
+
+    Parameters
+    ----------
+    ch_in : int
+        Number of input channels.
+    ch_out : int
+        Number of output channels.
+
+    Attributes
+    ----------
+    up : nn.ConvTranspose2d
+        Transposed convolutional layer for upsampling.
+
+    Methods
+    -------
+    forward(x)
+        Performs the forward pass of the upsampling block.
+    """
+
     def __init__(self, ch_in, ch_out):
         super(UpConv, self).__init__()
         self.up = nn.ConvTranspose2d(ch_in, ch_out, kernel_size=2, stride=2)
 
     def forward(self, x):
+        """
+        Forward pass for the UpConv.
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            Input tensor of shape (N, C, H, W).
+
+        Returns
+        -------
+        torch.Tensor
+            Upsampled output tensor.
+        """
         return self.up(x)
 
 
 class UNet(nn.Module):
+    """
+    U-Net architecture for image segmentation tasks.
+
+    This model uses an encoder-decoder architecture with skip connections between corresponding layers in the encoder
+    and decoder paths to preserve spatial information at different resolutions.
+
+    Parameters
+    ----------
+    in_channels : int, optional
+        Number of input channels. Default is 3.
+    out_channels : int, optional
+        Number of output channels. Default is 1.
+
+    Attributes
+    ----------
+    encoder1, encoder2, encoder3, encoder4 : nn.Sequential
+        Encoder blocks consisting of convolutional layers.
+    pool1, pool2, pool3, pool4 : nn.MaxPool2d
+        Pooling layers for downsampling the feature maps.
+    bottleneck : nn.Sequential
+        Bottleneck block connecting the encoder and decoder paths.
+    upconv1, upconv2, upconv3, upconv4 : UpConv
+        Upsampling layers for increasing the feature map size in the decoder path.
+    decoder1, decoder2, decoder3, decoder4 : nn.Sequential
+        Decoder blocks consisting of convolutional layers.
+    Conv_1x1 : nn.Conv2d
+        Final 1x1 convolutional layer for producing the output segmentation map.
+
+    Methods
+    -------
+    forward(x)
+        Performs the forward pass of the U-Net model.
+    """
+
     def __init__(self, in_channels=3, out_channels=1):
         super(UNet, self).__init__()
 
@@ -68,6 +168,23 @@ class UNet(nn.Module):
         self.Conv_1x1 = nn.Conv2d(32, out_channels, kernel_size=1, stride=1, padding=0)
 
     def forward(self, x):
+        """
+        Forward pass for the U-Net model.
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            Input tensor of shape (N, C, H, W) where:
+            - N is the batch size
+            - C is the number of input channels
+            - H is the height of the input image
+            - W is the width of the input image
+
+        Returns
+        -------
+        torch.Tensor
+            Output tensor of shape (N, out_channels, H, W).
+        """
         # Encoding path
         x1 = self.encoder1(x)  # (B, 32, H, W)
         x2 = self.pool1(x1)  # (B, 32, H//2, W//2)

@@ -6,9 +6,29 @@ class ImageDataset:
         """
         Initialize the ImageDataset class with base directory, image folder, and ground truth folder.
 
-        :param base_dir: The base directory where images and ground truth data are stored.
-        :param image_folder: The subdirectory for images.
-        :param gt_folder: The subdirectory for ground truth masks.
+        Attributes
+        ----------
+        base_dir : str
+            Base directory containing the image and ground truth folders.
+        image_folder : str
+            Folder containing the images.
+        gt_folder : str
+            Folder containing the ground truth masks.
+        image_dir : str
+            Directory containing the images.
+        gt_dir : str
+            Directory containing the ground truth masks.
+        image_paths : list
+            List of image file paths.
+        gt_paths : list
+            List of ground truth file paths.
+
+        Methods
+        -------
+        get_image_and_gt_paths()
+            Retrieve and store the paths to the images and ground truth masks.
+        check_dimensions()
+            Print the number of image and ground truth samples and check if they match
         """
         self.base_dir = base_dir
         self.image_folder = image_folder
@@ -20,6 +40,11 @@ class ImageDataset:
     def get_image_and_gt_paths(self):
         """
         Retrieve and store the paths to the images and ground truth masks.
+
+        Returns
+        -------
+        tuple
+            A tuple containing the image and ground truth paths.
         """
         # Combine the base directory with subdirectories for images and ground truth
         self.image_dir = os.path.join(self.base_dir, self.image_folder)

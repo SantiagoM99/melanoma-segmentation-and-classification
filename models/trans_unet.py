@@ -3,6 +3,41 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class DepthwiseConvBlock(nn.Module):
+    """
+    Depthwise convolutional block used in the TransUNet model for efficient feature extraction.
+
+    This block employs depthwise and pointwise convolutions followed by batch normalization and ReLU activation.
+
+    Parameters
+    ----------
+    ch_in : int
+        Number of input channels.
+    ch_out : int
+        Number of output channels.
+
+    Attributes
+    ----------
+    conv1 : nn.Conv2d
+        Depthwise convolution with `ch_in` groups.
+    pointwise1 : nn.Conv2d
+        Pointwise convolution for combining depthwise convolutions.
+    bn1 : nn.BatchNorm2d
+        Batch normalization applied after the first convolution.
+    conv2 : nn.Conv2d
+        Depthwise convolution with `ch_out` groups.
+    pointwise2 : nn.Conv2d
+        Pointwise convolution for combining depthwise convolutions.
+    bn2 : nn.BatchNorm2d
+        Batch normalization applied after the second convolution.
+    relu : nn.ReLU
+        ReLU activation function.
+
+    Methods
+    -------
+    forward(x)
+        Performs the forward pass of the depthwise convolutional block.
+    """
+
     def __init__(self, ch_in, ch_out):
         super(DepthwiseConvBlock, self).__init__()
         self.conv1 = nn.Conv2d(ch_in, ch_in, kernel_size=3, padding=1, groups=ch_in, bias=False)
@@ -16,6 +51,19 @@ class DepthwiseConvBlock(nn.Module):
         self.relu = nn.ReLU(inplace=True)
 
     def forward(self, x):
+        """
+        Forward pass for the DepthwiseConvBlock.
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            Input tensor of shape (N, C, H, W).
+
+        Returns
+        -------
+        torch.Tensor
+            Output tensor after depthwise and pointwise convolutions.
+        """
         x = self.conv1(x)
         x = self.pointwise1(x)
         x = self.bn1(x)
@@ -30,6 +78,39 @@ class DepthwiseConvBlock(nn.Module):
 
 
 class TransformerBlock(nn.Module):
+    """
+    Transformer block used in the TransUNet model.
+
+    This block employs multi-head self-attention followed by a feed-forward MLP with GELU activation.
+
+    Parameters
+    ----------
+    dim : int
+        Dimension of the input and output features.
+    heads : int
+        Number of attention heads.
+    mlp_dim : int
+        Dimension of the feed-forward MLP.
+    dropout : float, optional
+        Dropout rate applied to the attention and MLP layers. Default is 0.1.
+
+    Attributes
+    ----------
+    attn : nn.MultiheadAttention
+        Multi-head self-attention layer.
+    norm1 : nn.LayerNorm
+        Layer normalization applied after attention.
+    mlp : nn.Sequential
+        Feed-forward MLP with GELU activation and dropout.
+    norm2 : nn.LayerNorm
+        Layer normalization applied after the feed-forward MLP.
+
+    Methods
+    -------
+    forward(x)
+        Performs the forward pass of the transformer block.
+    """
+
     def __init__(self, dim, heads, mlp_dim, dropout=0.1):
         super(TransformerBlock, self).__init__()
         self.attn = nn.MultiheadAttention(embed_dim=dim, num_heads=heads, dropout=dropout)
@@ -44,7 +125,22 @@ class TransformerBlock(nn.Module):
         self.norm2 = nn.LayerNorm(dim)
 
     def forward(self, x):
-        # x: [B, N, C] (Batch, Num Patches, Channels)
+        """
+        Forward pass for the TransformerBlock.
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            Input tensor of shape (B, N, C) where:
+            - B is the batch size
+            - N is the number of patches
+            - C is the feature dimension
+
+        Returns
+        -------
+        torch.Tensor
+            Output tensor after self-attention and feed-forward layers.
+        """
         attn_out, _ = self.attn(x, x, x)  # Self-attention
         x = self.norm1(attn_out + x)  # Add & Norm
 
@@ -55,6 +151,48 @@ class TransformerBlock(nn.Module):
 
 
 class TransUNet(nn.Module):
+    """
+    TransUNet architecture for image segmentation tasks.
+
+    This model combines convolutional encoders with transformer blocks in the bottleneck to capture
+    both local and global dependencies for image segmentation.
+
+    Parameters
+    ----------
+    in_channels : int, optional
+        Number of input channels. Default is 3.
+    out_channels : int, optional
+        Number of output channels. Default is 1.
+    transformer_dim : int, optional
+        Dimension of the transformer features. Default is 256.
+    num_heads : int, optional
+        Number of attention heads in each transformer block. Default is 4.
+    mlp_dim : int, optional
+        Dimension of the feed-forward MLP in the transformer block. Default is 512.
+    transformer_depth : int, optional
+        Number of transformer blocks in the bottleneck. Default is 6.
+
+    Attributes
+    ----------
+    encoder1, encoder2, encoder3, encoder4 : nn.Sequential
+        Encoder blocks using depthwise convolutional layers.
+    pool1, pool2, pool3, pool4 : nn.MaxPool2d
+        Pooling layers for downsampling the feature maps.
+    transformer_blocks : nn.Sequential
+        Sequence of transformer blocks in the bottleneck.
+    upconv1, upconv2, upconv3, upconv4 : nn.ConvTranspose2d
+        Upsampling layers for increasing the feature map size in the decoder path.
+    decoder1, decoder2, decoder3, decoder4 : nn.Sequential
+        Decoder blocks using depthwise convolutional layers.
+    Conv_1x1 : nn.Conv2d
+        Final 1x1 convolutional layer for producing the output segmentation map.
+
+    Methods
+    -------
+    forward(x)
+        Performs the forward pass of the TransUNet model.
+    """
+
     def __init__(self, in_channels=3, out_channels=1, transformer_dim=256, num_heads=4, mlp_dim=512, transformer_depth=6):
         super(TransUNet, self).__init__()
 
@@ -97,6 +235,23 @@ class TransUNet(nn.Module):
         self.Conv_1x1 = nn.Conv2d(32, out_channels, kernel_size=1, stride=1, padding=0)
 
     def forward(self, x):
+        """
+        Forward pass for the TransUNet model.
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            Input tensor of shape (N, C, H, W) where:
+            - N is the batch size
+            - C is the number of input channels
+            - H is the height of the input image
+            - W is the width of the input image
+
+        Returns
+        -------
+        torch.Tensor
+            Output tensor of shape (N, out_channels, H, W).
+        """
         # Encoding path
         x1 = self.encoder1(x)  # (B, 64, H, W)
         x2 = self.pool1(x1)  # (B, 64, H//2, W//2)
