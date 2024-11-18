@@ -14,7 +14,7 @@ import torch
 Evaluate the trained model on the test dataset using metrics such as Dice coefficient, IoU, accuracy, and recall.
 """
 
-model_path = CONFIG["model_path"]+"unet_128_aug.pth"
+model_path = CONFIG["model_path"]+"transunet_128_aug.pth"
 device = CONFIG["device"]
 
 CONFIG_FINAL = CONFIG.copy()
@@ -22,7 +22,7 @@ CONFIG_FINAL["image_size"] = 128
 
 train_dataset, val_dataset, test_dataset = prepare_datasets(CONFIG_FINAL, train_transform_type="train")
 
-model = DataParallel(UNet())
+model = DataParallel(TransUNet())
 model.load_state_dict(torch.load(model_path, map_location=device))
 model.to(device)
 

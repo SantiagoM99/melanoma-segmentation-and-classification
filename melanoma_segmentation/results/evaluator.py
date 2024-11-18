@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 import numpy as np
+import time
 
 
 class Evaluator:
@@ -161,6 +162,7 @@ class Evaluator:
         iou_scores = []
         accuracy_scores = []
         recall_scores = []
+        inference_times = []
         indices = []
 
         max_values = [-1] * 4
@@ -172,9 +174,13 @@ class Evaluator:
             for idx, (images, masks) in enumerate(self.test_dataloader):
                 images = images.to(self.device)
                 masks = masks.to(self.device).float()
+
+                start_time = time.perf_counter()
                 outputs = self.model(images)
                 preds = torch.sigmoid(outputs)
                 preds = (preds > 0.5).float()
+                end_time = time.perf_counter()
+                inference_times.append(end_time - start_time)
 
                 dice = self.dice_coefficient(preds, masks)
                 iou = self.iou_score(preds, masks)
@@ -215,11 +221,17 @@ class Evaluator:
                     min_values[3] = recall
                     min_indices[3] = idx
 
+
+        avg_inference_time = np.mean(inference_times)
+        total_memory = torch.cuda.max_memory_allocated(self.device) / (1024 ** 2) if torch.cuda.is_available() else "N/A"
+
         print(f"Total number of images evaluated: {len(dice_scores)}")
         print(f"Range of Dice scores: {min(dice_scores)} - {max(dice_scores)}")
         print(f"Range of IoU scores: {min(iou_scores)} - {max(iou_scores)}")
         print(f"Range of Accuracy scores: {min(accuracy_scores)} - {max(accuracy_scores)}")
         print(f"Range of Recall scores: {min(recall_scores)} - {max(recall_scores)}")
+        print(f"Average inference time per batch: {avg_inference_time:.4f} seconds")
+        print(f"Peak GPU memory usage: {total_memory} MB")
 
         avg_dice = np.mean(dice_scores)
         avg_iou = np.mean(iou_scores)
