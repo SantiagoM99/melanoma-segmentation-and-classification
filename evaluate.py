@@ -2,6 +2,8 @@ from melanoma_segmentation.configs.config_setting import CONFIG
 from melanoma_segmentation.models.unet import UNet
 from melanoma_segmentation.models.attention_unet import AttUNet
 from melanoma_segmentation.models.trans_unet import TransUNet
+from melanoma_segmentation.models.residual_recurrent_unet import R2UNet
+from melanoma_segmentation.models.r2u_att_unet import R2AttUNet
 from melanoma_segmentation.utils.preparation_tools import prepare_datasets
 from melanoma_segmentation.results.evaluator import Evaluator
 from melanoma_segmentation.results.plots import plot_img_mask_pred
@@ -47,6 +49,6 @@ print("\nPlotting the image with the highest Dice score:")
 plot_img_mask_pred(test_dataset, index=max_indices[0], plot_pred=True, model=model, device=device, comparison=False)
 
 print("\nPlotting the image with the lowest Dice score:")
-plot_img_mask_pred(test_dataset, index=min_indices[0], plot_pred=False, model=model, device=device, comparison=True)
+plot_img_mask_pred(test_dataset, index=min_indices[0], plot_pred=True, model=model, device=device, comparison=False)
 
 
