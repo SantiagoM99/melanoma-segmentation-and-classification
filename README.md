@@ -1,4 +1,5 @@
 # Melanoma Segmentation and Classification
+![Comparison](https://github.com/user-attachments/assets/c12f67fe-77d2-442a-8605-73e2e357470f)
 
 This package/repository provides a comprehensive solution for melanoma segmentation and classification using deep learning techniques. The core of this project involves training and evaluating convolutional neural networks (CNNs) for accurately identifying and segmenting skin lesions in dermatoscopic images.
 
