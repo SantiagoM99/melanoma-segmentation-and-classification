@@ -90,4 +90,5 @@ def delete_documentation_files() -> None:
 
 
 if __name__ == "__main__":
-    delete_package_info()
+    #delete_package_info()
+    delete_documentation_files()

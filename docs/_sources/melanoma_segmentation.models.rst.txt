@@ -1,4 +1,4 @@
-Melanoma Segmentation models (melanoma\_segmentation.models)
+Melanoma Segmentation models (melanoma_segmentation.models)
 =====================================
 
 This subpackage contains modules for advanced image segmentation models and utility functions for melanoma segmentation tasks. Each module includes well-defined architectures, preprocessing utilities, and augmentation tools.

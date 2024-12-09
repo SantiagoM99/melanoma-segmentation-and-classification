@@ -1,5 +1,3 @@
-# implement a class to split data into train, validation and test sets
-
 import os
 from sklearn.model_selection import train_test_split
 
