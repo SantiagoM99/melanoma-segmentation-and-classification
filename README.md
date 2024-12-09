@@ -17,7 +17,7 @@ The project uses various dependencies such as `PyTorch`, `torchvision`, and `alb
 This project is intended for researchers and developers aiming to build or extend segmentation models for medical image analysis, specifically for tasks related to skin lesion identification and segmentation. It is well-suited for experimentation with dermatoscopic datasets and contributes to research efforts in melanoma detection.
 
 ### Package Link:
-[melanoma-segmentation Package](https://test.pypi.org/project/melanoma-segmentation/)
+[melanoma-segmentation Package](https://pypi.org/project/melanoma-segmentation/)
 
 ### References:
 - **Visualization**: Based on code by *an-eve* from the ISIC 2016 Lesion Segmentation Challenge [GitHub link](https://github.com/an-eve/ISIC-2016-lesion-segmentation-challenge/tree/main).
