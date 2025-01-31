@@ -3,6 +3,8 @@
 
 This package/repository provides a comprehensive solution for melanoma segmentation and classification using deep learning techniques. The core of this project involves training and evaluating convolutional neural networks (CNNs) for accurately identifying and segmenting skin lesions in dermatoscopic images.
 
+This repository is part of an undergraduate thesis project: [Detection and Segmentation of Malignant Melanoma Regions in Dermoscopic Images Using Machine Learning](https://hdl.handle.net/1992/75910)
+
 ### Features:
 - **Segmentation Models**: Includes implementations of various U-Net based models like R2U-Net and TransUNet with enhancements such as attention mechanisms and transformer blocks to achieve accurate segmentation of skin lesions.
 - **Dataset Preparation**: Automates the splitting of large dermatoscopic datasets into training, validation, and testing sets using customizable transformations for data augmentation, ensuring robust training.
