@@ -19,6 +19,8 @@ This project is intended for researchers and developers aiming to build or exten
 ### Package Link:
 [melanoma-segmentation Package](https://pypi.org/project/melanoma-segmentation/)
 
+You can find the documentation of the package right here: https://santiagom99.github.io/melanoma-segmentation-and-classification/
+
 ### References:
 - **Visualization**: Based on code by *an-eve* from the ISIC 2016 Lesion Segmentation Challenge [GitHub link](https://github.com/an-eve/ISIC-2016-lesion-segmentation-challenge/tree/main).
 - **TransUNet Design**: Inspired by *TESL-Net: A Transformer-Enhanced CNN for Accurate Skin Lesion Segmentation* by Shahzaib Iqbal et al. (2024). DOI: [arXiv link](https://arxiv.org/abs/2408.09687).
